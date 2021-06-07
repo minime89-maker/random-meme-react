@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import domtoimage from 'dom-to-image';
+import { saveAs } from 'file-saver';
 
 
 export default function App() {
@@ -25,10 +27,15 @@ export default function App() {
 		setRandomMeme(randomMeme);
 	};
 
-  // const downloadMeme = (e) => {
-  //   e.preventDefault()
-   
-  // }
+  // download meme
+  const downloadMeme = (e) => {
+    e.preventDefault()
+    domtoimage.toBlob(document.getElementById('meme'))
+    .then(function(blob) {
+      saveAs(blob, 'meme.png')
+    })    
+    console.log(document.getElementById('meme'))
+  }
 
   // upload own img and create meme
   const uploadMeme = (e) => {
@@ -36,6 +43,12 @@ export default function App() {
     setRandomMeme(URL.createObjectURL(img))
   }
 
+  const resetMeme = (e) => {
+    e.preventDefault()
+    setRandomMeme('https://i.imgflip.com/1h7in3.jpg')
+    setTop('')
+    setBottom('')
+  }
 
 	return (
 		<div className="App">
@@ -66,19 +79,20 @@ export default function App() {
 					>
 						Random
 					</button>
-					{/* <button
+					<button
 						onClick={downloadMeme}
 					>
 						Download
-					</button> */}
+					</button>
+          <button onClick={resetMeme}>Reset</button>
           <input type='file' name='image' onChange={uploadMeme}>
           </input>
 					</div>
 				</form>
-				<div className="meme">
-					{<img id='img' src={randomMeme} alt="" />}
-					<h2 className="top">{top.toUpperCase()}</h2>
-					<h2 className="bottom">{bottom.toUpperCase()}</h2>
+				<div className="meme" id='meme'>
+					{<img  src={randomMeme} alt="" />}
+					<h2 className="top">{top}</h2>
+					<h2 className="bottom">{bottom}</h2>
 				</div>
 			</div>
 		</div>
