@@ -84,9 +84,9 @@ export default function App() {
 					>
 						Download
 					</button>
-          <button onClick={resetMeme}>Reset</button>
           <input type='file' name='image' onChange={uploadMeme}>
           </input>
+          <button onClick={resetMeme}>Reset</button>
 					</div>
 				</form>
 				<div className="meme" id='meme'>
