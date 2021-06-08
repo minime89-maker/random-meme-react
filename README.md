@@ -6,7 +6,7 @@ This Meme website is a result of casual Monday at WBS Coding School :
 - 💬 Use your own imagination to create some text in Meme style
 - 🗾 Upload your own picture and create a custom meme
 
-➕🌍 Download your own Meme and share with everyone
+➕ 🌍  Download your own Meme and share with everyone
   
 
 <br />
